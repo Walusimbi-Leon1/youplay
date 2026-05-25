@@ -1,0 +1,73 @@
+/**
+ * RankBadge.css - Styling for RankBadge component
+ */
+
+.rank-badge {
+  border: 2px solid;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rank-badge-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rank-icon {
+  font-size: 1.2rem;
+}
+
+.rank-name {
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.rank-xp {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Size variants */
+.rank-badge-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.rank-badge-sm .rank-icon {
+  font-size: 0.875rem;
+}
+
+.rank-badge-md {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.rank-badge-md .rank-icon {
+  font-size: 1.2rem;
+}
+
+.rank-badge-lg {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
+.rank-badge-lg .rank-icon {
+  font-size: 1.5rem;
+}
+
+.rank-badge-lg .rank-name {
+  font-size: 1.125rem;
+}
+
+.rank-badge:hover {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
+}
