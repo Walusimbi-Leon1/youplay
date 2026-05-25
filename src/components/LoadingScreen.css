@@ -1,0 +1,36 @@
+.loading-screen {
+  min-height: calc(100vh - 120px);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.loading-inner {
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 1.5rem;
+  width: min(420px, 100%);
+}
+
+.loading-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  border: 6px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--accent-purple);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-inner p {
+  color: var(--text-secondary);
+}

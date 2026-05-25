@@ -1,0 +1,224 @@
+/* Card flip animation and styling */
+
+.card-item {
+  width: 100px;
+  height: 140px;
+  cursor: default;
+  perspective: 1000px;
+  position: relative;
+}
+
+.card-item.selectable {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card-item.selectable:hover {
+  transform: scale(1.1) translateY(-5px);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.25));
+}
+
+/* Bob animation when user selects their own card */
+.card-item.user-selected {
+  animation: bob 0.6s ease-out forwards;
+}
+
+@keyframes bob {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.15);
+  }
+  100% {
+    transform: translateY(-15px) scale(1.12);
+  }
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-item.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 32px;
+  position: relative;
+}
+
+.card-number {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.card-lock-icon {
+  font-size: 24px;
+  margin-top: 4px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.activity-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.activity-label {
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  max-width: 90%;
+}
+
+/* Selection indicators */
+.card-indicator {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-weight: bold;
+}
+
+/* Checkmark for current user's selection */
+.card-indicator--user {
+  top: -8px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  background: #10b981;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  animation: indicator-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Glow indicator for other players' selection */
+.card-indicator--other {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 150px;
+  border-radius: 8px;
+  border: 3px solid #3b82f6;
+  box-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.6),
+    inset 0 0 10px rgba(59, 130, 246, 0.2);
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes indicator-pop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.6),
+      inset 0 0 10px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(59, 130, 246, 0.9),
+      inset 0 0 15px rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Card grid container */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .card-item {
+    width: 80px;
+    height: 110px;
+  }
+
+  .card-number {
+    font-size: 36px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-item {
+    width: 60px;
+    height: 90px;
+  }
+
+  .card-number {
+    font-size: 28px;
+  }
+
+  .challenge-icon {
+    font-size: 32px;
+  }
+
+  .challenge-label {
+    font-size: 10px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+}
